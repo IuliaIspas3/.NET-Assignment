@@ -26,4 +26,10 @@ public class PostFileDao : IPostDao
         context.SaveChanges();
         return Task.FromResult(post);
     }
+
+    public Task<Post?> GetById(int id)
+    {
+        Post? existing = context.Posts.FirstOrDefault(u => u.Id == id);
+        return Task.FromResult(existing);
+    }
 }
