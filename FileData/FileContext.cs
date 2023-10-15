@@ -8,21 +8,25 @@ public class FileContext
     private const string filePath = "data.json";
     private DataContainer? dataContainer;
 
-    public ICollection<User> Users
+    public FileContext()
     {
-        get
-        {
-            LoadData();
-            return dataContainer!.Users;
-        }
+        LoadData();
     }
-    
+
     public ICollection<Post> Posts
     {
         get
         {
             LoadData();
             return dataContainer!.Posts;
+        }
+    }
+    public ICollection<User> Users
+    {
+        get
+        {
+            LoadData();
+            return dataContainer!.Users;
         }
     }
 
@@ -34,8 +38,8 @@ public class FileContext
         {
             dataContainer = new()
             {
-                Users = new List<User>(),
-                Posts = new List<Post>()
+                Posts = new List<Post>(),
+                Users = new List<User>()
             };
             return;
         }
