@@ -2,46 +2,10 @@
   "Users": [
     {
       "UserName": "Iulia",
-      "Password": "Aramis123",
-      "Status": "active"
-    },
-    {
-      "UserName": "Simona",
-      "Password": "Simona123",
+      "Password": "Iulia1234",
       "Status": "active"
     }
   ],
-  "Posts": [
-    {
-      "Id": 1,
-      "Title": "Croatia",
-      "Body": "It was greaaaaat",
-      "Owner": {
-        "UserName": "Iulia",
-        "Password": "Aramis123",
-        "Status": "active"
-      }
-    }
-  ],
-  "Comments": [
-    {
-      "Id": 1,
-      "Creator": {
-        "UserName": "Iulia",
-        "Password": "Aramis123",
-        "Status": "active"
-      },
-      "Post": {
-        "Id": 1,
-        "Title": "Croatia",
-        "Body": "It was greaaaaat",
-        "Owner": {
-          "UserName": "Iulia",
-          "Password": "Aramis123",
-          "Status": "active"
-        }
-      },
-      "Content": "I totally agree"
-    }
-  ]
+  "Posts": [],
+  "Comments": []
 }
