@@ -47,6 +47,17 @@ public class UserLogic: IUserLogic
         return loggedout;
     }
 
+    public async Task<UserBasicDto> GetUser(string username)
+    {
+        User? user = await userDao.GetByUsernameAsync(username);
+        if (user == null)
+        {
+            throw new Exception($"User with given username doesn't exist");
+        }
+
+        return new UserBasicDto(user.UserName, user.Password);
+    }
+
     private static void ValidateData(UserCreationDto userCreationDto)
     {
         string userName = userCreationDto.UserName;

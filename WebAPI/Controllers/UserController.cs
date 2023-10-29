@@ -30,4 +30,20 @@ public class UserController : ControllerBase
             return StatusCode(500, e.Message);
         }
     }
+    
+    [HttpGet("{username:string}")] //we mark the method with [HttpGet] so that GET requests to this controller end here
+    //the return value is the IEnumerable<User> wrapped in an HTTP response message
+    public async Task<ActionResult<IEnumerable<User>>> GetUserAsync([FromRoute] string username)//the argument is marked as [FromQuery] to indicate that this argument should be extracted from the query parameters of the URI
+    {
+        try
+        {
+            UserBasicDto userBasicDto = await userLogic.GetUser(username);
+            return Ok(userBasicDto);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return StatusCode(500, e.Message);
+        }
+    }
 }

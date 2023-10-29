@@ -35,20 +35,6 @@
     private string msg = "";
     private string color = "";
     
-    protected override async Task OnInitializedAsync()
-    {
-        msg = "";
-        try
-        {
-            user = await UserService.GetById(ownerUsername);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            msg = e.Message;
-        }
-    }
-
     private async Task Create()
     {
         msg = "";
@@ -61,6 +47,16 @@
         {
             msg = "Title cannot be empty!";
             return;
+        }
+        
+        try
+        {
+            user = await UserService.GetByUsername(ownerUsername);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            msg = e.Message;
         }
 
         try

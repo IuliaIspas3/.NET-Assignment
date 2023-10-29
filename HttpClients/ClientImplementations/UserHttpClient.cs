@@ -31,7 +31,7 @@ public class UserHttpClient : IUserService
         return user;
     }
 
-    public async Task<User> GetById(string? username = null)
+    public async Task<User> GetByUsername(string username)
     {
         string uri = "/user";
         if (!string.IsNullOrEmpty(username))

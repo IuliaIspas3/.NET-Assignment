@@ -50,7 +50,7 @@ public class UserFileDao: IUserDao
         throw new NotImplementedException();
     }
 
-    public Task<User?> GetByUsernameAsync(string userName)
+    public Task<User?> GetByUsernameAsync(string? userName)
     {
         User? existing = context.Users.FirstOrDefault(u => u.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase));
         return Task.FromResult(existing);
