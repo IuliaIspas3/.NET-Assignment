@@ -7,11 +7,11 @@ namespace WebAPI.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class UserController : ControllerBase
+public class UsersController : ControllerBase
 {
     private readonly IUserLogic userLogic;
 
-    public UserController(IUserLogic userLogic)
+    public UsersController(IUserLogic userLogic)
     {
         this.userLogic = userLogic;
     }
@@ -31,14 +31,20 @@ public class UserController : ControllerBase
         }
     }
     
-    [HttpGet("{username:string}")] //we mark the method with [HttpGet] so that GET requests to this controller end here
+    [HttpGet] //we mark the method with [HttpGet] so that GET requests to this controller end here
     //the return value is the IEnumerable<User> wrapped in an HTTP response message
-    public async Task<ActionResult<IEnumerable<User>>> GetUserAsync([FromRoute] string username)//the argument is marked as [FromQuery] to indicate that this argument should be extracted from the query parameters of the URI
+    public async Task<ActionResult<User>> GetUserAsync([FromQuery] string username)//the argument is marked as [FromQuery] to indicate that this argument should be extracted from the query parameters of the URI
     {
         try
         {
             UserBasicDto userBasicDto = await userLogic.GetUser(username);
-            return Ok(userBasicDto);
+            User user = new User
+            {
+                UserName = userBasicDto.UserName,
+                Password = userBasicDto.Password,
+                Status = userBasicDto.Status
+            };
+            return Ok(user);
         }
         catch (Exception e)
         {

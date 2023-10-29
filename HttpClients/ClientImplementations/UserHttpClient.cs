@@ -17,7 +17,7 @@ public class UserHttpClient : IUserService
 
     public async Task<User> Create(UserCreationDto dto)
     {
-        HttpResponseMessage response = await client.PostAsJsonAsync("/user", dto);
+        HttpResponseMessage response = await client.PostAsJsonAsync("/Users", dto);
         string result = await response.Content.ReadAsStringAsync();
         if (!response.IsSuccessStatusCode)
         {
@@ -33,7 +33,7 @@ public class UserHttpClient : IUserService
 
     public async Task<User> GetByUsername(string username)
     {
-        string uri = "/user";
+        string uri = "/Users";
         if (!string.IsNullOrEmpty(username))
         {
             uri += $"?username={username}";
@@ -50,6 +50,7 @@ public class UserHttpClient : IUserService
             {
                 PropertyNameCaseInsensitive = true
             })!;
+        Console.WriteLine("username"+user.UserName);
         return user;
     }
 }

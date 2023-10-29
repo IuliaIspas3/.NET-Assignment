@@ -6,30 +6,30 @@
 @inject IUserService UserService
 
 <div class="card">
-        <h3>Create Post</h3>
-        <div class="form-group field">
-            <label>Title:</label>
-            <input type="text" @bind="postTitle"/>
-             <label>Context:</label>
-             <input type="text" @bind="context"/>
-        </div>
-        <div class="form-group field">
-            <label>Assignee:</label>
-            <input type="text" @bind="ownerUsername"/>
-        </div>
-        <div class="button-row">
-            @if (!string.IsNullOrEmpty(msg))
-            {
-                <label style="color: red">@msg</label>
-            }
-            <button @onclick="Create" class="acceptbtn">Create</button>
-        </div>
+    <h3>Create Post</h3>
+    <div class="form-group field">
+        <label>Title:</label>
+        <input type="text" @bind="postTitle"/>
+        <label>Context:</label>
+        <input type="text" @bind="context"/>
+    </div>
+    <div class="form-group field">
+        <label>Assignee:</label>
+        <input type="text" @bind="ownerUsername"/>
+    </div>
+    <div class="button-row">
+        @if (!string.IsNullOrEmpty(msg))
+        {
+            <label style="color: red">@msg</label>
+        }
+        <button @onclick="Create" class="acceptbtn">Create</button>
+    </div>
 </div>
 
 @code {
-    private User user = null!;
+    private User user;
     //private IEnumerable<User>? users;
-    private string? ownerUsername;
+    private string ownerUsername="T";
     private string postTitle = "";
     private string context = "";
     private string msg = "";
@@ -56,7 +56,7 @@
         catch (Exception e)
         {
             Console.WriteLine(e);
-            msg = e.Message;
+            msg = e.Message + "here1";
         }
 
         try
@@ -67,7 +67,7 @@
         catch (Exception e)
         {
             Console.WriteLine(e);
-            msg = e.Message;
+            msg = e.Message + "here2" + user.UserName;
         }
     }
 }

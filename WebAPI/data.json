@@ -1,11 +1,22 @@
 {
   "Users": [
     {
-      "UserName": "Iulia",
-      "Password": "Iulia1234",
+      "UserName": "Dragos",
+      "Password": "Dragos1234",
       "Status": "active"
     }
   ],
-  "Posts": [],
+  "Posts": [
+    {
+      "Id": 1,
+      "Title": "Hello",
+      "Body": "wejyfgwref",
+      "Owner": {
+        "UserName": "Dragos",
+        "Password": "Dragos1234",
+        "Status": "active"
+      }
+    }
+  ],
   "Comments": []
 }
