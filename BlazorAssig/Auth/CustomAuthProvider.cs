@@ -1,5 +1,5 @@
 using System.Security.Claims;
-using BlazorAssig.Services;
+using HttpClients.ClientInterfaces;
 using Microsoft.AspNetCore.Components.Authorization;
 
 namespace BlazorAssig.Auth;
@@ -14,7 +14,7 @@ public class CustomAuthProvider : AuthenticationStateProvider
         this.authService = authService;
         authService.OnAuthStateChanged += AuthStateChanged;
     }
-    public async override Task<AuthenticationState> GetAuthenticationStateAsync()
+    public override async Task<AuthenticationState> GetAuthenticationStateAsync()
     {
         ClaimsPrincipal principal = await authService.GetAuthAsync();
         

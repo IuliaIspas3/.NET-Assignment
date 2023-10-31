@@ -2,14 +2,13 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using BlazorAssig;
 using BlazorAssig.Auth;
-using BlazorAssig.Services;
-using BlazorAssig.Services.Http;
 using Domain.Auth;
 using HttpClients.ClientImplementations;
 using HttpClients.ClientInterfaces;
 using Microsoft.AspNetCore.Components.Authorization;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
+
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
@@ -18,6 +17,7 @@ builder.Services.AddScoped<IUserService, UserHttpClient>();
 builder.Services.AddScoped<IPostService, PostHttpClient>();
 builder.Services.AddScoped<IAuthService, JwtAuthService>();
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthProvider>();
+
 
 AuthorizationPolicies.AddPolicies(builder.Services);
 

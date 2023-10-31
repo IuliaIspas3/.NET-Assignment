@@ -7,5 +7,4 @@ public interface IUserService
 {
     Task<User> Create(UserCreationDto dto);
     Task<User> GetByUsername(string username);
-    
 }
