@@ -9,6 +9,11 @@
       "UserName": "Iulia",
       "Password": "wefiwuhrf",
       "Status": "active"
+    },
+    {
+      "UserName": "Mara",
+      "Password": "Mara12345",
+      "Status": "active"
     }
   ],
   "Posts": [
@@ -39,6 +44,46 @@
       "Owner": {
         "UserName": "Iulia",
         "Password": "wefiwuhrf",
+        "Status": "active"
+      }
+    },
+    {
+      "Id": 4,
+      "Title": "Some free days in Italy",
+      "Body": "Best vacation ever!",
+      "Owner": {
+        "UserName": "Mara",
+        "Password": "Mara12345",
+        "Status": "active"
+      }
+    },
+    {
+      "Id": 5,
+      "Title": "The worst nightmare",
+      "Body": "It was awful",
+      "Owner": {
+        "UserName": "Mara",
+        "Password": "Mara12345",
+        "Status": "active"
+      }
+    },
+    {
+      "Id": 6,
+      "Title": "Just for fun",
+      "Body": "Yeeee",
+      "Owner": {
+        "UserName": "Mara",
+        "Password": "Mara12345",
+        "Status": "active"
+      }
+    },
+    {
+      "Id": 7,
+      "Title": "Halloween party",
+      "Body": "Can\u0027t wait",
+      "Owner": {
+        "UserName": "Mara",
+        "Password": "Mara12345",
         "Status": "active"
       }
     }

@@ -1,4 +1,5 @@
 @page "/ViewPost/{Id:int}"
+@attribute [Authorize]
 @using Domain.Models
 @using HttpClients.ClientInterfaces
 @inject IPostService PostService

@@ -21,9 +21,9 @@ public class UserFileDao: IUserDao
 
     public Task<User> LoginAsync(User user)
     {
+        User? existing = context.Users.FirstOrDefault(u => u.UserName.Equals(user.UserName) && u.Password.Equals(user.Password));
         user.Status = "active";
-        User? existing = context.Users.FirstOrDefault(u => u.Equals(user));
-        if (existing != null && existing.Status.Equals("unactive"))
+        if (existing != null)
         {
             context.Users.Remove(existing);
             context.Users.Add(user);
@@ -34,8 +34,8 @@ public class UserFileDao: IUserDao
 
     public Task<User> LogoutAsync(User user)
     {
+        User? existing = context.Users.FirstOrDefault(u => u.UserName.Equals(user.UserName) && u.Password.Equals(user.Password));
         user.Status = "unactive";
-        User? existing = context.Users.FirstOrDefault(u => u.Equals(user));
         if (existing != null && existing.Status.Equals("active"))
         {
             context.Users.Remove(existing);
@@ -47,7 +47,11 @@ public class UserFileDao: IUserDao
 
     public Task<User?> GetUserAsync(string userName, string password)
     {
-        throw new NotImplementedException();
+        User user = new User();
+        user.UserName = userName;
+        user.Password = password;
+        User? existing = context.Users.FirstOrDefault(u => u.UserName.Equals(userName) && u.Password.Equals(password));
+        return Task.FromResult(existing);
     }
 
     public Task<User?> GetByUsernameAsync(string? userName)

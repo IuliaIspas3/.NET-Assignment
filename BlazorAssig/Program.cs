@@ -18,6 +18,8 @@ builder.Services.AddScoped<IPostService, PostHttpClient>();
 builder.Services.AddScoped<IAuthService, JwtAuthService>();
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthProvider>();
 
+builder.Services.AddAuthorizationCore();
+
 
 AuthorizationPolicies.AddPolicies(builder.Services);
 
