@@ -35,6 +35,16 @@ public class PostLogic : IPostLogic
         return created;
     }
 
+    public Task<IEnumerable<Post>> GetAsync(SearchPostParametersDto searchPostParametersDto)
+    {
+        return postDao.GetAsync(searchPostParametersDto);
+    }
+
+    public Task<Post?> GetById(int id)
+    {
+        return postDao.GetById(id);
+    }
+
     private void ValidatePost(Post post)
     {
         if (string.IsNullOrEmpty(post.Title))

@@ -4,6 +4,11 @@
       "UserName": "Dragos",
       "Password": "Dragos1234",
       "Status": "active"
+    },
+    {
+      "UserName": "Iulia",
+      "Password": "wefiwuhrf",
+      "Status": "active"
     }
   ],
   "Posts": [
@@ -14,6 +19,26 @@
       "Owner": {
         "UserName": "Dragos",
         "Password": "Dragos1234",
+        "Status": "active"
+      }
+    },
+    {
+      "Id": 2,
+      "Title": "Vacay to Spain",
+      "Body": "efwrfuwrg",
+      "Owner": {
+        "UserName": "Iulia",
+        "Password": "wefiwuhrf",
+        "Status": "active"
+      }
+    },
+    {
+      "Id": 3,
+      "Title": "Vacay to Spain",
+      "Body": "efwrfuwrg",
+      "Owner": {
+        "UserName": "Iulia",
+        "Password": "wefiwuhrf",
         "Status": "active"
       }
     }

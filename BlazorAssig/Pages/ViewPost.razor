@@ -1,0 +1,57 @@
+@page "/ViewPost/{Id:int}"
+@using Domain.Models
+@using HttpClients.ClientInterfaces
+@inject IPostService PostService
+<h3>View Post</h3>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Username</th>
+        <th>Text</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    @if (post != null)
+    {
+        <tr>
+                <td>@post.Id</td>
+                <td>@post.Title</td>
+                <td>@post.Owner.UserName</td>
+                <td>@post.Body</td>
+            </tr>
+    }
+    </tbody>
+</table>
+
+@if (!string.IsNullOrEmpty(msg))
+    {
+        <label style="color: red">@msg</label>
+    }
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    
+    private Post post = null!;
+    private string msg = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        msg = "";
+        try
+        {
+            Post postData = await PostService.GetById(Id);
+            post = new Post(postData.Title, postData.Body, postData.Owner);
+            post.Id = postData.Id;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            msg = e.Message;
+        }
+    }
+}

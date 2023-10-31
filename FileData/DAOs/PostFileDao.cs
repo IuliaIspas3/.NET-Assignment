@@ -1,4 +1,5 @@
 using Application.DaoInterfaces;
+using Domain.DTOs;
 using Domain.Models;
 
 namespace FileData.DAOs;
@@ -31,5 +32,16 @@ public class PostFileDao : IPostDao
     {
         Post? existing = context.Posts.FirstOrDefault(u => u.Id == id);
         return Task.FromResult(existing);
+    }
+
+    public Task<IEnumerable<Post>> GetAsync(SearchPostParametersDto dto)
+    {
+        IEnumerable<Post> posts = context.Posts.AsEnumerable();
+        if (dto.Title != null)
+        {
+            posts = context.Posts.Where(p => p.Title.Contains(dto.Title));
+        }
+
+        return Task.FromResult(posts);
     }
 }
