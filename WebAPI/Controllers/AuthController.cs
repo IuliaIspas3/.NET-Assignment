@@ -6,6 +6,7 @@ using Domain.DTOs;
 using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using IConfiguration = Microsoft.Extensions.Configuration.IConfiguration;
 
 namespace WebAPI.Controllers;
 

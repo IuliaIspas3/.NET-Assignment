@@ -10,7 +10,7 @@
     <tr>
         <th>Id</th>
         <th>Title</th>
-        <th>Username</th>
+        <th>OwnerID</th>
         <th>Text</th>
 
     </tr>
@@ -21,7 +21,7 @@
         <tr>
                 <td>@post.Id</td>
                 <td>@post.Title</td>
-                <td>@post.Owner.UserName</td>
+                <td>@post.OwnerUsername</td>
                 <td>@post.Body</td>
             </tr>
     }
@@ -46,8 +46,8 @@
         try
         {
             Post postData = await PostService.GetById(Id);
-            post = new Post(postData.Title, postData.Body, postData.Owner);
-            post.Id = postData.Id;
+            post = new Post(postData.Title, postData.Body, postData.OwnerUsername);
+            post.Id = Id;
         }
         catch (Exception e)
         {

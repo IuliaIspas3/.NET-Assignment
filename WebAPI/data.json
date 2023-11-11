@@ -14,6 +14,11 @@
       "UserName": "Mara",
       "Password": "Mara12345",
       "Status": "active"
+    },
+    {
+      "UserName": "IuliaIspas",
+      "Password": "Iulia12345",
+      "Status": "active"
     }
   ],
   "Posts": [
@@ -84,6 +89,16 @@
       "Owner": {
         "UserName": "Mara",
         "Password": "Mara12345",
+        "Status": "active"
+      }
+    },
+    {
+      "Id": 8,
+      "Title": "Vacation to Copenhagen",
+      "Body": "Yeee it was really cool",
+      "Owner": {
+        "UserName": "IuliaIspas",
+        "Password": "Iulia12345",
         "Status": "active"
       }
     }

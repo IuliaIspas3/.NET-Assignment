@@ -24,12 +24,7 @@ public class PostLogic : IPostLogic
             throw new Exception($"User with username {dto.OwnerUsername} was not found.");
         }
 
-        // if (user.Status.Equals("inactive"))
-        // {
-        //     throw new Exception($"User with username {dto.OwnerUsername} is not logged in.");
-        // }
-
-        Post post = new Post(dto.Title, dto.Body, user);
+        Post post = new Post(dto.Title, dto.Body, user.UserName);
         ValidatePost(post);
         Post created = await postDao.CreateAsync(post);
         return created;
@@ -40,9 +35,15 @@ public class PostLogic : IPostLogic
         return postDao.GetAsync(searchPostParametersDto);
     }
 
-    public Task<Post?> GetById(int id)
+    public async Task<Post?> GetById(int id)
     {
-        return postDao.GetById(id);
+        Post? post = await postDao.GetById(id);
+        if (post == null)
+        {
+            throw new Exception($"Todo with ID {post.Id} not found!");
+        }
+
+        return new Post(post.Title, post.Body, post.OwnerUsername);
     }
 
     private void ValidatePost(Post post)
