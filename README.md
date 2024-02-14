@@ -1,0 +1,1 @@
+The system allows users to log in and create posts on their profile. The technologies used in the development are .NET Framework with C# for the implementation of API, Blazor for the UI and SQLite for the database
